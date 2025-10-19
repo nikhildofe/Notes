@@ -137,11 +137,6 @@
       margin-bottom: 50px;
     }
 
-    .contact-info a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-
     footer {
       text-align: center;
       padding: 15px;
@@ -222,7 +217,7 @@
     <h1>B. Tech Engineering Notes</h1>
   </header>
 
-  <section>
+ <section>
     <h2>B. Tech Civil 7<sup>th</sup> Semester - Air Pollution & Solid Waste Management</h2>
     <div class="pdf-grid">
       <div class="pdf-card" onclick="openModal('Air Pollution & Solid Waste Management/Air Pollution & Solid Waste Management Chapter 1.pdf')"><i class="fa fa-file-pdf"></i> Chapter 1</div>
@@ -251,6 +246,7 @@
     </div>
 </section>
 
+
   <!-- Modal -->
   <div id="pdfModal" class="modal">
     <div class="modal-content">
@@ -275,9 +271,7 @@
     </div>
   </section>
 
-  <footer>
-    © 2025 Nikhil Dofe
-  </footer>
+  <footer>© 2025 Nikhil Dofe</footer>
 
   <script>
     function toggleTheme() {
@@ -296,17 +290,17 @@
       modalTitle.textContent = filename;
       modal.style.display = 'flex';
 
+      // Open PDF in same window
       viewBtn.onclick = () => {
-        window.open(currentFile, '_blank');
+        window.location.href = currentFile;
       };
 
+      // Download in same window
       downloadBtn.onclick = () => {
         const link = document.createElement('a');
         link.href = currentFile;
-        link.download = filename;
-        document.body.appendChild(link);
+        link.download = file.split('/').pop();
         link.click();
-        document.body.removeChild(link);
       };
     }
 
@@ -316,17 +310,8 @@
     }
 
     window.onclick = function(event) {
-      if (event.target == modal) {
-        closeModal();
-      }
+      if (event.target == modal) closeModal();
     };
   </script>
-
 </body>
 </html>
-
-
-
-
-
-
